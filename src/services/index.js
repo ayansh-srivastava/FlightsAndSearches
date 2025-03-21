@@ -1,0 +1,1 @@
+module.exports={cityService:require(`./cityservices`)};
