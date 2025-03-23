@@ -69,9 +69,25 @@ const get=async (req,res)=>{
       })
     } 
  }
+ const getAll=async (req,res) => {
+   try {
+      const cities=await cityservice.getall(req.query);
+      return res.status(200).json({
+         data:cities,
+         success:true
+      })
+   } catch (error) {
+      console.log(error);
+      return res.status(404).json({
+         data:"Something went wrong",
+         success:false
+      })
+   }
+ }
  module.exports={
     create,
     destroy,
     get,
-    update
+    update,
+    getAll
  }

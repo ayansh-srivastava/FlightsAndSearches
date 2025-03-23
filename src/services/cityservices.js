@@ -42,6 +42,14 @@ class CityService {
         } 
         catch (error) {
             console.log("Something went wrong in service later");  
+        }y
+    }
+    async getall(filter){
+        try {
+            const cities=await this.repo.getAll({name:filter.name});
+            return cities;
+        } catch (error) {
+            console.log(error,"something went wrong at service layer");
         }
     }
 }

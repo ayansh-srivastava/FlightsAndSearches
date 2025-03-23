@@ -1,5 +1,6 @@
 const { where } = require('sequelize');
 const {City}=require('../models/index.js');
+const {Op} =require('sequelize')
 
 
 class CityRepository{
@@ -40,6 +41,28 @@ class CityRepository{
             return city;
         } catch (err) {
             console.log(err);
+        }
+    }
+    async getAll(filter){
+        console.log(filter);
+        try {
+            if(filter.name){
+                console.log("HELLO");
+                const cities=await City.findAll({
+                    where : {
+                        name:{
+                        [Op.startsWith]: filter.name
+                    }}}
+                )
+            return cities;
+        }   
+        console.log("HI")
+            const cities=await City.findAll();
+            console.log(cities);
+            return cities;
+            
+        } catch (err) {
+            console.log(err,"SOMETHING WENT WRONGIN REPO LAYER");
         }
     }
 }
