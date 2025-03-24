@@ -3,6 +3,7 @@ const router=express.Router();
 const cityController=require(`../../controllers/cityController`);
 router.post(`/city`,cityController.create);
 router.get(`/city/:id`,cityController.get);
+router.get(`/city/airports/:id`,cityController.airport);
 router.delete(`/city/:id`,cityController.destroy);
 router.patch(`/city/:id`,cityController.update);
 router.get('/city',cityController.getAll)

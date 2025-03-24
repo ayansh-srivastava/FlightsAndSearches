@@ -155,7 +155,7 @@ module.exports = {
       }
     ]
     
-,{})                     
+,{ignoreDuplicates:true})                     
   },
 
   async down (queryInterface, Sequelize) {

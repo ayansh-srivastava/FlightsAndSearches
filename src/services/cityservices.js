@@ -34,7 +34,16 @@ class CityService {
             console.log("Something went wrong in service later");    
         }
     }
-    
+    async getMultiple(data){
+        try {
+            const city=await this.repo.createMultiple(data);
+            return city;
+            
+        } catch (error) {
+            console.log("Something went wrong in service later");    
+
+        }
+    }
     async getCity(id){
         try {
             const city=await this.repo.getCity(id);
@@ -42,7 +51,7 @@ class CityService {
         } 
         catch (error) {
             console.log("Something went wrong in service later");  
-        }y
+        }
     }
     async getall(filter){
         try {
@@ -50,6 +59,15 @@ class CityService {
             return cities;
         } catch (error) {
             console.log(error,"something went wrong at service layer");
+        }
+    }
+    async getAirport(cityid){
+        try {
+            const airports=await this.repo.getAirport(cityid);
+            console.log(airports,"in serice")
+            return airports;
+        } catch (error) {
+            console.log(error);
         }
     }
 }

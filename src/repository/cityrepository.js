@@ -13,6 +13,13 @@ class CityRepository{
             console.log(error);
         }
     }
+    async createMultiple(data){
+        try {
+            return await City.bulkCreate(data);
+        } catch (error) {
+            console.log(error)
+        }
+    }
     async deleteCity(id){
         try {
             return await City.destroy({
@@ -44,10 +51,8 @@ class CityRepository{
         }
     }
     async getAll(filter){
-        console.log(filter);
         try {
             if(filter.name){
-                console.log("HELLO");
                 const cities=await City.findAll({
                     where : {
                         name:{
@@ -56,13 +61,20 @@ class CityRepository{
                 )
             return cities;
         }   
-        console.log("HI")
             const cities=await City.findAll();
-            console.log(cities);
             return cities;
             
         } catch (err) {
             console.log(err,"SOMETHING WENT WRONGIN REPO LAYER");
+        }
+    }
+    async getAirport(cityid){
+        try {
+            const cities=await City.findByPk(cityid);
+            const airport=await  cities.getAirports();
+            return airport;
+        } catch (error) {
+            console.log(error)
         }
     }
 }
