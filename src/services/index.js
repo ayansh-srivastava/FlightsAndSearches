@@ -1,1 +1,4 @@
-module.exports={cityService:require(`./cityservices`)};
+module.exports={
+    cityService:require(`./cityservices`),
+    flightServices:require("./flightServices")
+};
